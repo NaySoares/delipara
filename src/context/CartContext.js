@@ -1,8 +1,8 @@
 'use client';
 
-import { createContext, useEffect, useState, useContext } from 'react'
+import { createContext, useState, useContext } from 'react'
 
-/*interface Transaction {
+/*interface cartItem {
   id: number;
   price: number;
   name: string;
@@ -14,11 +14,8 @@ const CartContext = createContext({});
 export function CartProvider({ children }) {
   const [cartItens, setCartItens] = useState([])
   const [total, setTotal] = useState(0)
-
-  // useEffect(() => {
-  //   api.get('transactions')
-  //     .then(response => setTransactions(response.data.transactions))
-  // }, []);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [modalItem, setModalItem] = useState({});
 
   async function addItemCart({ id, name, price, src }) {
     const cartItem = {
@@ -56,8 +53,18 @@ export function CartProvider({ children }) {
     alert('Compra realizada com sucesso!');
   }
 
+  async function openModal(name, price, src, id) {
+    setIsOpenModal(true);
+    setModalItem({ name, price, src, id });
+  }
+
+  async function closeModal() {
+    setIsOpenModal(false);
+    setModalItem({});
+  }
+
   return (
-    <CartContext.Provider value={{ buyItems, total, cartItens, addItemCart, removeItemCart }}>
+    <CartContext.Provider value={{ closeModal, openModal, isOpenModal, modalItem, buyItems, total, cartItens, addItemCart, removeItemCart }}>
       {children}
     </CartContext.Provider>
   );

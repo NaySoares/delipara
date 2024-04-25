@@ -7,15 +7,22 @@ import { useCartItem } from '@/context/CartContext'
 
 export const Card = ({ name, price, description, src, id }) => {
 
-  const { addItemCart } = useCartItem();
+  const { addItemCart, openModal } = useCartItem();
 
   const handleAddItemCart = (name, price, src, id) => {
     addItemCart({ name, price, src, id });
   }
 
+  const handlerModal = (name, price, src, id) => {
+    openModal(name, price, src, id);
+  }
+
   return (
     /*<Link href="/product">*/
-    <div className={styles.container} onClick={() => handleAddItemCart(name, price, src, id)}>
+    <div
+      className={styles.container}
+      onClick={() => handleAddItemCart(name, price, src, id)}
+    >
       <div className={styles.coverImage}>
         <Image
           src={src}

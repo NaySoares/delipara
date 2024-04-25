@@ -3,15 +3,16 @@ import { Card } from "@/components/Card/Card";
 import { Cart } from "@/components/Cart/Cart";
 import { Food } from "@/services/food";
 import { CartProvider } from "@/context/CartContext";
+import { Modal } from "@/components/Modal/Modal";
 
 import styles from "./page.module.css";
-import { Modal } from "@/components/Modal/modal";
 
 export default function Home() {
   return (
     <CartProvider>
       <main className={styles.main}>
         <Navbar />
+        <Modal />
         <div className={styles.wrapper}>
           <section className={styles.letter}>
             <div className={styles.inlineSection}>

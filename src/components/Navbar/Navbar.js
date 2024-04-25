@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { List } from "@phosphor-icons/react";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 import styles from "./Navbar.module.css";
 
@@ -8,14 +8,14 @@ export const Navbar = ({ path }) => {
     <div className={styles.container}>
       <div className={styles.navbar}>
         <div className={styles.box}>
-          <h2>
-            <b>DeliPará</b>
-          </h2>
+          <NextLink href="/" path={path}>
+            <h2>DeliPará</h2>
+          </NextLink>
         </div>
 
         <div className={styles.box}>
           <NextLink href="/" path={path}>
-            teste
+            <RxHamburgerMenu size={28} />
           </NextLink>
         </div>
       </div>

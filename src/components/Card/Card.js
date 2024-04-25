@@ -1,15 +1,27 @@
+'use client';
+
 import Image from 'next/image'
 import styles from './Card.module.css'
+import Link from 'next/link'
+import { useCartItem } from '@/context/CartContext'
 
-export const Card = ({ name, price, description, src }) => {
+export const Card = ({ name, price, description, src, id }) => {
+
+  const { addItemCart } = useCartItem();
+
+  const handleAddItemCart = (name, price, src, id) => {
+    addItemCart({ name, price, src, id });
+  }
+
   return (
-    <div className={styles.container}>
+    /*<Link href="/product">*/
+    <div className={styles.container} onClick={() => handleAddItemCart(name, price, src, id)}>
       <div className={styles.coverImage}>
         <Image
           src={src}
           alt="cover"
-          width={250}
-          height={250}
+          width={200}
+          height={200}
         />
       </div>
       <div className={styles.content}>
@@ -18,5 +30,6 @@ export const Card = ({ name, price, description, src }) => {
         <p>R$ {price}</p>
       </div>
     </div>
+    /*</Link>*/
   );
 }

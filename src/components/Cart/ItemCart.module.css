@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 3px;
+  width: 100%;
+  gap: 1rem;
+}
+
+.container img {
+  border-radius: 0.5rem;
+}
+
+.container p { 
+  color: white;
+}
+
+.container b { 
+  color: white;
+}
+
+.container:hover {
+  background: #FF5556;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
